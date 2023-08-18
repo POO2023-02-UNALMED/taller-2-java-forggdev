@@ -9,16 +9,22 @@ public class Auto {
 	int registro;
 	static int cantidadCreados;
 	
-	public int cantidadAsientos() {
-		return this.asientos.length;
+	int cantidadAsientos() {
+		int numAsientos=0;
+		for (int i = 0; i < this.asientos.length; i++) {
+			if (this.asientos[i] != null) {
+				numAsientos++;
+			}
+		}
+		return numAsientos;
 	}
 	
-	public String verificarIntegridad() {
+	String verificarIntegridad() {
 		boolean asientosOriginales = true;
-		int registroAsientos = this.asientos[0].registro;
+		int registroGeneral=this.registro;
 		String mensaje;
-		for (int i = 1; i < this.asientos.length; i++) {
-			if (this.asientos[i].registro != registroAsientos) {
+		for (int i = 0; i < this.asientos.length; i++) {
+			if (this.asientos[i] != null && this.asientos[i].registro != registroGeneral) {
 				asientosOriginales = false;
 				break;
 			}
